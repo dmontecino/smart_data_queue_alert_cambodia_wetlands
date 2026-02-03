@@ -1,4 +1,4 @@
-name: Hourly R Script
+name: Run the data queue alert every 30 mins
 
 on:
   schedule:
@@ -26,4 +26,13 @@ jobs:
           API_URL: ${{ secrets.API_URL }}
           API_USER: ${{ secrets.HEALTH_SMART_CONNECT_USER_NAME }}
           API_PASS: ${{ secrets.HEALTH_SMART_CONNECT_PASSWORD }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: Rscript function_data_queue_alert_wetlands_ranger_data_newer.R
+        
+      - name: Commit updated data
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add past_data_in_queue.csv
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update queue data"
+          git push
