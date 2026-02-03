@@ -24,6 +24,6 @@ jobs:
       - name: Run R script
         env:
           API_URL: ${{ secrets.API_URL }}
-          API_USER: ${{ secrets.API_USER }}
-          API_PASS: ${{ secrets.API_PASS }}
+          API_USER: ${{ secrets.HEALTH_SMART_CONNECT_USER_NAME }}
+          API_PASS: ${{ secrets.HEALTH_SMART_CONNECT_PASSWORD }}
         run: Rscript function_data_queue_alert_wetlands_ranger_data_newer.R
