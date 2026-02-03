@@ -23,19 +23,11 @@ jobs:
           packages: |
             any::httr
             any::xml2
-            any::jsonlite
-            any::dplyr
-            any::janitor
-            any::purrr
-            any::lubridate
-            any::stringr
-            any::telegram.bot
       
       - name: Run R script
         env:
-          API_URL: ${{ secrets.API_URL }}
-          API_USER: ${{ secrets.HEALTH_SMART_CONNECT_USER_NAME }}
-          API_PASS: ${{ secrets.HEALTH_SMART_CONNECT_PASSWORD }}
+          API_USER: ${{ secrets.CONNECT_USERNAME }}
+          API_PASS: ${{ secrets.CONNECT_PASSWORD }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: Rscript function_data_queue_alert_wetlands_ranger_data_newer.R
         
