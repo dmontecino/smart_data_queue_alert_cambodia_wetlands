@@ -3,13 +3,13 @@
 #########################
 
 library(httr)
-# library(jsonlite)
-# library(dplyr)
-# library(janitor)
-# library(purrr)
-# library(lubridate)
-# library(stringr)
-# library(telegram.bot)
+library(jsonlite)
+library(dplyr)
+library(janitor)
+library(purrr)
+library(lubridate)
+library(stringr)
+library(telegram.bot)
 
 # GitHub Actions runs in the project root by default, no need for setwd()
 
