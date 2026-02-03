@@ -17,8 +17,8 @@ library(telegram.bot)
 response <- GET(
   url = Sys.getenv("API_URL"),  # Changed: Now uses GitHub Secret
   config = authenticate(
-    user = Sys.getenv("API_USER"),      # Changed: Now uses GitHub Secret
-    password = Sys.getenv("API_PASS")   # Changed: Now uses GitHub Secret
+    user = Sys.getenv("HEALTH_SMART_CONNECT_USER_NAME"),      # Changed: Now uses GitHub Secret
+    password = Sys.getenv("HEALTH_SMART_CONNECT_PASSWORD")   # Changed: Now uses GitHub Secret
   ), 
   timeout(30)
 )
@@ -70,4 +70,4 @@ if (nrow(data.in.queue.not.in.previous.runs) > 0) {
 # Write the current data in the queue to compare in the next round
 write.csv(current.data.queue, "past_data_in_queue.csv", row.names = FALSE)
 
-cat("Script completed successfully\n")
+# cat("Script completed successfully\n")
