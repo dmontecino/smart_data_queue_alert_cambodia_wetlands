@@ -26,8 +26,8 @@ jobs:
       
       - name: Run R script
         env:
-          API_USER: ${{ secrets.CONNECT_USERNAME }}
-          API_PASS: ${{ secrets.CONNECT_PASSWORD }}
+          CONNECT_USERNAME: ${{ secrets.CONNECT_USERNAME }}
+          CONNECT_PASSWORD: ${{ secrets.CONNECT_PASSWORD }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: Rscript function_data_queue_alert_wetlands_ranger_data_newer.R
         
