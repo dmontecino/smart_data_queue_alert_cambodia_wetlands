@@ -15,7 +15,7 @@ library(telegram.bot)
 
 # Open current available data in the queue
 response <- GET(
-  url = Sys.getenv("API_URL"),  # Changed: Now uses GitHub Secret
+  url = "https://wcshealth.smartconservationtools.org/server/api/dataqueue/items",  # Changed: Now uses GitHub Secret
   config = authenticate(
     user = Sys.getenv("HEALTH_SMART_CONNECT_USER_NAME"),      # Changed: Now uses GitHub Secret
     password = Sys.getenv("HEALTH_SMART_CONNECT_PASSWORD")   # Changed: Now uses GitHub Secret
