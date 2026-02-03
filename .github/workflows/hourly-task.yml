@@ -1,9 +1,8 @@
 name: Run the data queue alert every 30 mins
-
 on:
   schedule:
-    - cron: "*/30 * * * *"  # Runs every 30 minutes
-  workflow_dispatch:  # Allows manual trigger
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
 
 jobs:
   run-script:
@@ -15,11 +14,21 @@ jobs:
       
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.3.2'
       
-      - name: Install R packages
-        run: |
-          install.packages(c("httr", "jsonlite", "dplyr", "janitor", "purrr", "lubridate", "stringr", "telegram.bot"))
-        shell: Rscript {0}
+      - name: Setup R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::httr
+            any::jsonlite
+            any::dplyr
+            any::janitor
+            any::purrr
+            any::lubridate
+            any::stringr
+            any::telegram.bot
       
       - name: Run R script
         env:
