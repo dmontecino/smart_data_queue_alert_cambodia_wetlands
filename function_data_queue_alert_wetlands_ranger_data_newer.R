@@ -23,10 +23,10 @@ response <- GET(
   timeout(30)
 )
 
-if (status_code(response) == 200) {
+# if (status_code(response) == 200) {
   data <- content(response, as = "parsed")
   current.data.queue <- map(data, as_tibble) |> bind_rows()
-}
+# }
 
 current.data.queue <- current.data.queue |> 
   select(name, conservationArea)
@@ -41,10 +41,8 @@ if (file.exists("past_data_in_queue.csv")) {
 }
 
 # Find new data
-data.in.queue.not.in.previous.runs <- anti_join(
-  current.data.queue, 
-  past.data.in.queue
-)
+data.in.queue.not.in.previous.runs <- anti_join(current.data.queue, 
+                                                past.data.in.queue)
 
 # If there is new data then send message
 if (nrow(data.in.queue.not.in.previous.runs) > 0) {
