@@ -23,6 +23,13 @@ jobs:
           packages: |
             any::httr
             any::xml2
+            any::jsonlite
+            any::dplyr
+            any::janitor
+            any::purrr
+            any::lubridate
+            any::stringr
+            any::telegram.bot
       
       - name: Run R script
         env:
