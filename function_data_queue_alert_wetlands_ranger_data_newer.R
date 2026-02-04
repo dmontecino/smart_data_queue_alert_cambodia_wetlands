@@ -17,16 +17,16 @@ library(telegram.bot)
 response <- GET(
   url = "https://wcshealth.smartconservationtools.org/server/api/dataqueue/items",  # Changed: Now uses GitHub Secret
   config = authenticate(
-    user = Sys.getenv("CONNECT_PASSWORD"),      # Changed: Now uses GitHub Secret
-    password = Sys.getenv("CONNECT_USERNAME")   # Changed: Now uses GitHub Secret
+    user = Sys.getenv("CONNECT_USERNAME"),      # Changed: Now uses GitHub Secret
+    password = Sys.getenv("CONNECT_PASSWORD")   # Changed: Now uses GitHub Secret
   ), 
   timeout(30)
 )
 
-# if (status_code(response) == 200) {
+if (status_code(response) == 200) {
   data <- content(response, as = "parsed")
   current.data.queue <- map(data, as_tibble) |> bind_rows()
-# }
+}
 
 current.data.queue <- current.data.queue |> 
   select(name, conservationArea)
