@@ -23,10 +23,10 @@ response <- GET(
   timeout(30)
 )
 
-if (status_code(response) == 200) {
+# if (status_code(response) == 200) {
   data <- content(response, as = "parsed")
   current.data.queue <- map(data, as_tibble) |> bind_rows()
-}
+# }
 
 current.data.queue <- current.data.queue |> 
   select(name, conservationArea)
